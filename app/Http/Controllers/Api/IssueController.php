@@ -22,6 +22,7 @@ class IssueController extends Controller
 	public function show($id)
 	{
 		$issue = $this->issue->find($id);
+		$issue->photo = $issue->image_path;
 
 		$issue->status;
 		$issue->category;
@@ -29,8 +30,10 @@ class IssueController extends Controller
 			'lon' => $issue->x,
 			'lat' => $issue->y
 		];
+		$issue->comments = 3;
 
 		unset($issue->geom);
+		unset($issue->image_path);
 
 		return response()->json($issue);
 	}
