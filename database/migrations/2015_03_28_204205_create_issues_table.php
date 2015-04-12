@@ -15,16 +15,22 @@ class CreateIssuesTable extends Migration {
 		Schema::create('issues', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('username', 255)->nullable();
 			$table->string('comment', 255)->nullable();
-			$table->integer('like')->default(0);
-			$table->integer('dislike')->default(0);
+			$table->string('image_path', 255);
+			$table->integer('likes')->default(0);
+			$table->timestamps();
+
 			$table->integer('city_id')->unsigned()->index();
 			$table->integer('category_id')->unsigned()->index();
-			$table->timestamps();
+			$table->integer('status_id')->unsigned()->index();
 
 			$table->foreign('city_id')->references('id')->on('cities');
 			$table->foreign('category_id')->references('id')->on('categories');
+			$table->foreign('status_id')->references('id')->on('status');
 		});
+
+		DB::update("ALTER TABLE issues ADD COLUMN geom GEOMETRY(POINT, 4326)");
 	}
 
 	/**
