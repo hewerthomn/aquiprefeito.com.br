@@ -12,10 +12,17 @@ class CategoryController extends Controller
 		$this->category = $category;
 	}
 
-	public function getIndex()
+	public function index()
 	{
 		$categories = $this->category->all();
 
 		return response()->json($categories);
+	}
+
+	public function show($id)
+	{
+		$category = $this->category->find($id);
+
+		return response()->json($category);
 	}
 }

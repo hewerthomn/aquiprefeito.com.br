@@ -8,7 +8,6 @@ Route::controllers([
 ]);
 
 Route::group(['prefix' => 'api'], function() {
-	Route::controllers([
-		'category' => 'Api\CategoryController'
-	]);
+	Route::resource('category', 'Api\CategoryController');
+	Route::resource('issue', 'Api\IssueController');
 });
