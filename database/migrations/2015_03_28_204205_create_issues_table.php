@@ -18,7 +18,6 @@ class CreateIssuesTable extends Migration {
 			$table->string('username', 255)->nullable();
 			$table->string('comment', 255)->nullable();
 			$table->string('image_path', 255);
-			$table->integer('likes')->default(0);
 			$table->timestamps();
 
 			$table->integer('city_id')->unsigned()->index();
