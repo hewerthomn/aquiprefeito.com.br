@@ -35,6 +35,14 @@ class Issue extends Model
 		return $this->belongsTo('App\Status');
 	}
 
+	/**
+	 * Belongs to Status
+	 */
+	public function likes()
+	{
+		return $this->hasMany('App\Like');
+	}
+
 	public function getPointAttribute($value)
 	{
 		$row = DB::table('issues')->whereId($this->attributes['id'])->first([DB::raw('ST_AsText(issues.geom) as point')]);

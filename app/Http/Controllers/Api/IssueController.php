@@ -49,6 +49,7 @@ class IssueController extends Controller
 		$issue = $this->issue->find($id);
 		$issue->photo = $issue->image_path;
 
+		$issue->likes = $issue->likes()->count();
 		$issue->status;
 		$issue->category;
 		$issue->lonlat = [
