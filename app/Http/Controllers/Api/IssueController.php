@@ -20,7 +20,25 @@ class IssueController extends Controller
 
 	public function index()
 	{
-		$categories = $this->issue->all();
+		$categories = $this->issue->join('categories', 'issues.category_id', '=', 'categories.id')
+															->join('status', 'issues.status_id', '=', 'status.id')
+															->join('cities', 'issues.city_id', '=', 'cities.id')
+															->select(
+																'issues.id',
+																'issues.category_id',
+																'issues.status_id',
+																'issues.city_id',
+																'issues.username',
+																'issues.comment',
+																'issues.likes',
+																'categories.name AS category_name',
+																'categories.icon AS category_icon',
+																'status.name AS status_name',
+																'cities.name AS city_name',
+																DB::raw('ST_X(issues.geom) AS lon'),
+																DB::raw('ST_Y(issues.geom) AS lat')
+															)
+															->get();
 
 		return response()->json($categories);
 	}
