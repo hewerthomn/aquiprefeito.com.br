@@ -50,13 +50,13 @@ class IssueController extends Controller
 		$issue->photo = $issue->image_path;
 
 		$issue->likes = $issue->likes()->count();
+		$issue->comments = $issue->comments()->count();
 		$issue->status;
 		$issue->category;
 		$issue->lonlat = [
 			'lon' => $issue->x,
 			'lat' => $issue->y
 		];
-		$issue->comments = 3;
 
 		unset($issue->geom);
 		unset($issue->image_path);

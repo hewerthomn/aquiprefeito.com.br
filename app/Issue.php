@@ -36,11 +36,19 @@ class Issue extends Model
 	}
 
 	/**
-	 * Belongs to Status
+	 * Has many Like
 	 */
 	public function likes()
 	{
 		return $this->hasMany('App\Like');
+	}
+
+	/**
+	 * Has many Comment
+	 */
+	public function comments()
+	{
+		return $this->hasMany('App\Comment');
 	}
 
 	public function getPointAttribute($value)
