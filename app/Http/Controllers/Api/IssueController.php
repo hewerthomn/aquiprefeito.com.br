@@ -63,7 +63,7 @@ class IssueController extends Controller
 		return response()->json($issue);
 	}
 
-	public function store(StoreIssuePostRequest $request)
+	public function upload(StoreIssuePostRequest $request)
 	{
 		try {
 			$city = $this->city->firstOrCreate(['name' => Input::get('city')]);

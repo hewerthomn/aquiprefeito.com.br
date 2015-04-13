@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-	<form method="POST" action="/api/issue" enctype="multipart/form-data">
+	<form method="POST" action="/api/upload" enctype="multipart/form-data">
 
 		<fieldset>
 			<legend>Test de Upload de Imagem</legend>
