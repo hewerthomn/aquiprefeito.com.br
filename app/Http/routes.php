@@ -12,8 +12,11 @@ Route::controllers([
 ]);
 
 Route::group(['prefix' => 'api'], function() {
-	Route::resource('category', 'Api\CategoryController');
-	Route::resource('issue', 'Api\IssueController');
-
 	Route::post('upload', 'Api\IssueController@upload');
+
+	Route::resource('category', 'Api\CategoryController',
+									['only' => ['index', 'show']]);
+
+	Route::resource('issue', 'Api\IssueController',
+									['only' => ['index', 'show']]);
 });
