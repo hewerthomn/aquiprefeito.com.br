@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Services\Image;
 use DB;
 
 /**
@@ -50,5 +51,13 @@ class Issue extends Model
 	{
 		$row = DB::table('issues')->whereId($this->attributes['id'])->first([DB::raw('ST_Y(issues.geom) as y')]);
 		return $row ? $row->y : null;
+	}
+
+	public static function upload($file)
+	{
+		if(!$file) return false;
+
+		$image = new Image;
+		return $image->upload($file, 'issue', true);
 	}
 }

@@ -2,6 +2,10 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('upload', function() {
+	return view('upload');
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
