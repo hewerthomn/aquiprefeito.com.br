@@ -74,6 +74,6 @@ class Issue extends Model
 		if(!$file) return false;
 
 		$image = new Image;
-		return $image->upload($file, 'issue', true);
+		return $image->upload($file, 'issues', true);
 	}
 }
