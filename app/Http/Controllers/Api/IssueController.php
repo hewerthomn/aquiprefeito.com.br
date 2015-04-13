@@ -28,6 +28,7 @@ class IssueController extends Controller
 																'issues.category_id',
 																'issues.status_id',
 																'issues.city_id',
+																'issues.image_path',
 																'issues.username',
 																'issues.comment',
 																'issues.likes',
