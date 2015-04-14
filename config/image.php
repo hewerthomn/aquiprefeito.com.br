@@ -7,8 +7,8 @@
 
 	'dimensions'  => [
 //		    width  height crop  quality
-		'sm' => [120,	60,  false, 100],
-		'md' => [240, 120, false, 100],
-		'lg' => [340, 240, false, 100]
+		'sm' => [120,	120, false, 100],
+		'md' => [240, 240, false, 100],
+		'lg' => [340, 340, false, 100]
 	],
 ];
