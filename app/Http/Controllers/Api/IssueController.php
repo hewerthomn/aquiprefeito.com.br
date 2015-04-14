@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreIssuePostRequest;
 use App\City;
 use App\Issue;
+use App\Like;
 use App\Status;
 use DB, Input;
 
@@ -12,10 +13,11 @@ use DB, Input;
 */
 class IssueController extends Controller
 {
-	public function __construct(City $city, Issue $issue)
+	public function __construct(City $city, Issue $issue, Like $like)
 	{
 		$this->city = $city;
 		$this->issue = $issue;
+		$this->like = $like;
 	}
 
 	public function index()
@@ -85,5 +87,15 @@ class IssueController extends Controller
 		} catch (Exception $e) {
 			return $e;
 		}
+	}
+
+	public function checkLike($id)
+	{
+		$uuid = Input::get('uuid');
+		$count = $this->like->where('uuid', '=', $uuid)
+												->where('issue_id', '=', $id)
+												->count();
+
+		return ($count > 0) ? 1 : 0;
 	}
 }
