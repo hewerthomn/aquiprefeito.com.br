@@ -98,4 +98,13 @@ class IssueController extends Controller
 
 		return ($count > 0) ? 1 : 0;
 	}
+
+	public function saveLike($id)
+	{
+		$uuid = Input::get('uuid');
+		$like = new Like;
+		$like->uuid = $uuid;
+		$like->issue_id = $id;
+		$like->save();
+	}
 }
