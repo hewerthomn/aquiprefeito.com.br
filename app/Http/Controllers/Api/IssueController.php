@@ -31,6 +31,7 @@ class IssueController extends Controller
 																'issues.image_path AS photo',
 																'issues.username',
 																'issues.comment',
+																'issues.created_at',
 																'categories.name AS category_name',
 																'categories.icon AS category_icon',
 																'status.name AS status_name',
