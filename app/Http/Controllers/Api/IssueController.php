@@ -72,11 +72,13 @@ class IssueController extends Controller
 			$city = $this->city->firstOrCreate(['name' => Input::get('city')]);
 
 			$issue = new Issue;
-			$issue->city_id = $city->id;
-			$issue->status_id = Status::$OPEN;
+			$issue->city_id 		= $city->id;
+			$issue->email 			= Input::get('email');
+			$issue->comment 		= Input::get('comment');
+			$issue->username 		= Input::get('username');
+			$issue->status_id 	= Status::$OPEN;
+			$issue->facebook_id = Input::get('facebook_id');
 			$issue->category_id = Input::get('category_id');
-			$issue->username = Input::get('username');
-			$issue->comment = Input::get('comment');
 
 			$lonlat = Input::get('lonlat');
 			$issue->geom = DB::raw("ST_GeomFromText('POINT({$lonlat})', 4326)");
@@ -85,7 +87,7 @@ class IssueController extends Controller
 
 			return $issue->save() ?  'Parabéns! Problema reportado.' : 'Ops, saiu algo errado... x_x';
 		} catch (Exception $e) {
-			return $e;
+			return $e->getMessage();
 		}
 	}
 
