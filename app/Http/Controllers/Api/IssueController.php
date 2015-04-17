@@ -81,7 +81,7 @@ class IssueController extends Controller
 				AND i.id = {$id}
 			");
 
-		return response()->json($issue);
+		return response()->json(isset($issue[0]) ? $issue[0] : null);
 	}
 
 	public function map()
