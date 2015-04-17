@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreIssuePostRequest;
+use App\Http\Requests\StoreCommentPostRequest;
 use App\City;
 use App\Issue;
 use App\Like;
+use App\Comment;
 use App\Status;
 use DB, Input;
 
@@ -149,5 +151,20 @@ class IssueController extends Controller
 		}
 
 		return $like->save() ? 1 : 0;
+	}
+
+	public function saveComment(StoreCommentPostRequest $request)
+	{
+		try {
+			$comment = new Comment;
+			$comment->comment = Input::get('comment');
+			$comment->username = Input::get('username');
+			$comment->issue_id = Input::get('issue_id');
+			$comment->facebook_id = Input::get('facebook_id');
+
+			return $comment->save() ? 'Comentário enviado com sucesso' : 'Ops, saiu algo errado... x_x';
+		} catch (Exception $e) {
+			return $e->getMessage();
+		}
 	}
 }
