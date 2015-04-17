@@ -55,20 +55,31 @@ class IssueController extends Controller
 
 	public function show($id)
 	{
-		$issue = $this->issue->find($id);
-		$issue->photo = $issue->image_path;
-
-		$issue->likes = $issue->likes()->count();
-		$issue->comments = $issue->comments()->count();
-		$issue->status;
-		$issue->category;
-		$issue->lonlat = [
-			'lon' => $issue->x,
-			'lat' => $issue->y
-		];
-
-		unset($issue->geom);
-		unset($issue->image_path);
+		$issue = DB::select(
+			"SELECT
+				i.id,
+				i.category_id,
+				i.status_id,
+				i.image_path AS photo,
+				i.username,
+				i.facebook_id,
+				i.comment,
+				EXTRACT(EPOCH FROM i.created_at) AS created_at,
+				c.name AS category_name,
+				c.icon AS category_icon,
+				s.name AS status_name,
+				s.icon AS status_icon,
+				ST_X(i.geom) AS lon,
+				ST_Y(i.geom) AS lat,
+				(SELECT COUNT(id) FROM likes WHERE likes.issue_id = i.id) AS likes,
+				(SELECT COUNT(id) FROM comments WHERE comments.issue_id = i.id) AS comments
+			FROM
+				issues i, categories c, status s
+			WHERE
+				i.category_id = c.id
+				AND i.status_id = s.id
+				AND i.id = {$id}
+			");
 
 		return response()->json($issue);
 	}
