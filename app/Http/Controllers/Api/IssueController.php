@@ -129,8 +129,7 @@ class IssueController extends Controller
 
 	public function checkLike($id)
 	{
-		$uuid = Input::get('uuid');
-		$count = $this->like->where('uuid', '=', $uuid)
+		$count = $this->like->where('facebook_id', '=', Input::get('facebook_id'))
 												->where('issue_id', '=', $id)
 												->count();
 
@@ -139,10 +138,16 @@ class IssueController extends Controller
 
 	public function saveLike($id)
 	{
-		$uuid = Input::get('uuid');
-		$like = new Like;
-		$like->uuid = $uuid;
-		$like->issue_id = $id;
-		$like->save();
+		$like = $this->like->firstOrNew([
+			'issue_id' => $id,
+			'facebook_id' => Input::get('facebook_id')
+		]);
+
+		if($like->id > 0)
+		{
+			return $like->delete() ? 0 : 1;
+		}
+
+		return $like->save() ? 1 : 0;
 	}
 }

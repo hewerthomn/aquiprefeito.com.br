@@ -20,6 +20,7 @@ Route::group(['prefix' => 'api'], function() {
 	Route::get('issue/map', 'Api\IssueController@map');
 	Route::get('issue/{id}/like', 'Api\IssueController@checkLike');
 	Route::post('issue/{id}/like', 'Api\IssueController@saveLike');
+	Route::post('issue/{id}/comment', 'Api\IssueController@saveComment');
 
 	Route::resource('issue', 'Api\IssueController',
 									['only' => ['index', 'show']]);
