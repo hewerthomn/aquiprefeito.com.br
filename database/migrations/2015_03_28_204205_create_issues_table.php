@@ -15,18 +15,20 @@ class CreateIssuesTable extends Migration {
 		Schema::create('issues', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('username', 255)->nullable();
+			$table->string('email');
+			$table->string('facebook_id');
+			$table->string('username', 255);
 			$table->string('comment', 255)->nullable();
 			$table->string('image_path', 255);
-			$table->integer('likes')->default(0);
 			$table->timestamps();
 
 			$table->integer('city_id')->unsigned()->index();
-			$table->integer('category_id')->unsigned()->index();
-			$table->integer('status_id')->unsigned()->index();
-
 			$table->foreign('city_id')->references('id')->on('cities');
+
+			$table->integer('category_id')->unsigned()->index();
 			$table->foreign('category_id')->references('id')->on('categories');
+
+			$table->integer('status_id')->unsigned()->index();
 			$table->foreign('status_id')->references('id')->on('status');
 		});
 

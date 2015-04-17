@@ -15,10 +15,10 @@ class CreateLikesTable extends Migration {
 		Schema::create('likes', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('uuid');
-			$table->integer('issue_id')->unsigned()->index();
+			$table->string('facebook_id');
 			$table->timestamps();
 
+			$table->integer('issue_id')->unsigned()->index();
 			$table->foreign('issue_id')->references('id')->on('issues');
 		});
 	}
