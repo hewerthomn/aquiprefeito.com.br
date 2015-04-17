@@ -15,11 +15,12 @@ use DB, Input;
 */
 class IssueController extends Controller
 {
-	public function __construct(City $city, Issue $issue, Like $like)
+	public function __construct(City $city, Issue $issue, Like $like, Comment $comment)
 	{
 		$this->city = $city;
 		$this->issue = $issue;
 		$this->like = $like;
+		$this->comment = $comment;
 	}
 
 	public function index()
@@ -151,6 +152,11 @@ class IssueController extends Controller
 		}
 
 		return $like->save() ? 1 : 0;
+	}
+
+	public function getComments($id)
+	{
+		return $this->comment->where('issue_id', '=', $id)->get();
 	}
 
 	public function saveComment(StoreCommentPostRequest $request)
