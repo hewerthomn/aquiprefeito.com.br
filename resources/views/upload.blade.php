@@ -33,6 +33,18 @@
 			</div>
 
 			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" name="email" class="form-control" value="hewerthomn@gmail.com">
+				<?php echo $errors->first('email', '<span class="text-danger">:message</span>'); ?>
+			</div>
+
+			<div class="form-group">
+				<label for="facebook_id">Facebook ID</label>
+				<input type="text" name="facebook_id" class="form-control" value="403469733157626">
+				<?php echo $errors->first('facebook_id', '<span class="text-danger">:message</span>'); ?>
+			</div>
+
+			<div class="form-group">
 				<label for="category_id">Category</label>
 				<input type="text" name="category_id" class="form-control" value="1">
 				<?php echo $errors->first('category_id', '<span class="text-danger">:message</span>'); ?>
