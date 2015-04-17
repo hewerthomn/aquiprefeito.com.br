@@ -22,28 +22,35 @@ class IssueController extends Controller
 
 	public function index()
 	{
-		$categories = $this->issue->join('categories', 'issues.category_id', '=', 'categories.id')
-															->join('status', 'issues.status_id', '=', 'status.id')
-															->join('cities', 'issues.city_id', '=', 'cities.id')
-															->select(
-																'issues.id',
-																'issues.category_id',
-																'issues.status_id',
-																'issues.city_id',
-																'issues.image_path AS photo',
-																'issues.username',
-																'issues.comment',
-																'issues.created_at',
-																'categories.name AS category_name',
-																'categories.icon AS category_icon',
-																'status.name AS status_name',
-																'cities.name AS city_name',
-																DB::raw('ST_X(issues.geom) AS lon'),
-																DB::raw('ST_Y(issues.geom) AS lat')
-															)
-															->get();
+		$city_name = Input::get('city_name');
 
-		return response()->json($categories);
+		$issues = DB::select(
+			"SELECT
+				i.id,
+				i.category_id,
+				i.status_id,
+				i.image_path AS photo,
+				i.username,
+				i.facebook_id,
+				i.comment,
+				EXTRACT(EPOCH FROM i.created_at) AS created_at,
+				c.name AS category_name,
+				c.icon AS category_icon,
+				s.icon AS status_icon,
+				ST_X(i.geom) AS lon,
+				ST_Y(i.geom) AS lat,
+				(SELECT COUNT(id) FROM likes WHERE likes.issue_id = i.id) AS likes,
+				(SELECT COUNT(id) FROM comments WHERE comments.issue_id = i.id) AS comments
+			FROM
+				issues i, categories c, cities, status s
+			where
+				i.category_id = c.id
+				AND i.city_id = cities.id
+				AND i.status_id = s.id
+				AND cities.name = '{$city_name}'
+			");
+
+		return response()->json($issues);
 	}
 
 	public function show($id)
