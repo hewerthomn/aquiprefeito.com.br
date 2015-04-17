@@ -17,9 +17,10 @@ Route::group(['prefix' => 'api'], function() {
 	Route::resource('category', 'Api\CategoryController',
 									['only' => ['index', 'show']]);
 
-	Route::resource('issue', 'Api\IssueController',
-									['only' => ['index', 'show']]);
-
+	Route::get('issue/map', 'Api\IssueController@map');
 	Route::get('issue/{id}/like', 'Api\IssueController@checkLike');
 	Route::post('issue/{id}/like', 'Api\IssueController@saveLike');
+
+	Route::resource('issue', 'Api\IssueController',
+									['only' => ['index', 'show']]);
 });

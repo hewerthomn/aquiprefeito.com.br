@@ -66,6 +66,24 @@ class IssueController extends Controller
 		return response()->json($issue);
 	}
 
+	public function map()
+	{
+		$city_name = Input::get('city_name');
+
+		$points = $this->issue->join('categories', 'issues.category_id', '=', 'categories.id')
+													->join('cities', 'issues.city_id', '=', 'cities.id')
+													->where('cities.name', '=', $city_name)
+													->select(
+														'issues.id',
+														'categories.icon AS icon',
+														DB::raw('ST_X(issues.geom) AS lon'),
+														DB::raw('ST_Y(issues.geom) AS lat')
+													)
+													->get();
+
+		return response()->json($points);
+	}
+
 	public function upload(StoreIssuePostRequest $request)
 	{
 		try {
