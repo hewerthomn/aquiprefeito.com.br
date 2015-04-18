@@ -156,7 +156,18 @@ class IssueController extends Controller
 
 	public function getComments($id)
 	{
-		return $this->comment->where('issue_id', '=', $id)->get();
+		$comments = DB::select("
+			SELECT
+				id,
+				comment,
+				facebook_id,
+				username,
+				EXTRACT(EPOCH FROM created_at) AS created_at
+			FROM comments
+			WHERE issue_id = {$id};
+		");
+
+		return $comments;
 	}
 
 	public function saveComment(StoreCommentPostRequest $request)
