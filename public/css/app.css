@@ -5,6 +5,10 @@
 	display: none;
 }
 
+.navbar {
+	border: none !important;
+}
+
 .navbar-inverse {
 	background-color: #444 !important;
 }
