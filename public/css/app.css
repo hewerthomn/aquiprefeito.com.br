@@ -4,3 +4,15 @@
 .olControlZoom {
 	display: none;
 }
+
+.navbar-inverse {
+	background-color: #444 !important;
+}
+
+.navbar-inverse a,
+.navbar-inverse span,
+.navbar-inverse p,
+.navbar-inverse div,
+.navbar-inverse b {
+	color: #fff;
+}
