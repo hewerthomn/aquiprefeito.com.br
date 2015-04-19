@@ -4,3 +4,5 @@
 /node_modules
 .env
 public/packages
+public/build
+
