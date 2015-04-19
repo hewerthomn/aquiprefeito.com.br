@@ -19,9 +19,8 @@ module.exports = function(grunt) {
 					'public/packages/angular-touch/angular-touch.min.js',
 					'public/packages/ngstorage/ngStorage.min.js',
 					'public/packages/angular-ui-router/release/angular-ui-router.min.js',
-					'public/packages/ionic/js/ionic.min.js',
-					'public/packages/ionic/js/ionic-angular.min.js',
-					'public/packages/ngCordova/dist/ng-cordova.min.js',
+					'public/packages/angular-bootstrap/ui-bootstrap.min.js',
+					'public/packages/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
 					'public/app/app.js',
 					'public/app/config.js',
