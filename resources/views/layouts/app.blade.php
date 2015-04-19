@@ -13,6 +13,7 @@
 	@yield('content')
 
 	<!-- Scripts -->
+	@yield('scripts')
 	<script src="{{ asset('/build/js/app.min.js') }}"></script>
 </body>
 </html>

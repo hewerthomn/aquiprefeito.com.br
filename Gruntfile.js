@@ -12,6 +12,8 @@ module.exports = function(grunt) {
 			app: {
 				dest: 'public/build/js/app.min.js',
 				src: [
+					'public/js/OpenLayers-app.js',
+
 					'public/packages/angular/angular.min.js',
 					'public/packages/angular-animate/angular-animate.min.js',
 					'public/packages/angular-focus-it/angular-focus-it.min.js',
