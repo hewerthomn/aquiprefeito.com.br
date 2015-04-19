@@ -282,12 +282,6 @@ function MapService()
 	  	var self = this,
 	  			point;
 
-	  	if(!self._layers.hasOwnProperty('geolocate'))
-	  	{
-	  		self._layers.geolocate = new OpenLayers.Layer.Vector('Geolocate');
-	      self._map.addLayer(self._layers.geolocate);
-	  	}
-
 	  	if (!self._controls.hasOwnProperty('geolocate'))
 	  	{
 	  		self._controls.geolocate = new OpenLayers.Control.Geolocate({

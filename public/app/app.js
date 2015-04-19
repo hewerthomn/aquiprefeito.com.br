@@ -5,5 +5,6 @@
 angular.module('app', [
 	'ui.bootstrap',
 	'ngRoute',
+	'ngStorage',
 	'focusIt'
 ]);

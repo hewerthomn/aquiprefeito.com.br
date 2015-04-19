@@ -30,7 +30,9 @@ module.exports = function(grunt) {
 
 					'public/app/components/home/HomeController.js',
 
-					'public/app/services/MapService.js'
+					'public/app/services/AquiService.js',
+					'public/app/services/MapService.js',
+					'public/app/services/GeocoderService.js'
 				]
 			}
 		},

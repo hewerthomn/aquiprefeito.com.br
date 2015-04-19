@@ -2,8 +2,11 @@
 /**
  * Home Controller
  */
-function HomeController($scope, $window, Map) {
+function HomeController($scope, $window, focus, Aqui, Map) {
 
+	/*
+	 * Private metodos
+	 */
 	function _init()
 	{
 		Map.init({
@@ -16,9 +19,24 @@ function HomeController($scope, $window, Map) {
 			onSelectPoint: _onSelectPoint
 		});
 
-		angular.element($window).bind('resize', function() { Map.fixMapHeight(); });
+		$scope.$storage = Aqui.storage();
 
-		console.log('HomeController initied :D');
+		_getPosition();
+
+		angular.element($window).bind('resize', function() { Map.fixMapHeight(); });
+	};
+
+	function _getPosition()
+	{
+		Map.getPosition(function(lonlat) {
+			Map.setCenterMap(lonlat, 14);
+			Aqui.getPlaceInfo(lonlat);
+
+		}, function(err) {
+			console.log(err);
+		}, function() {
+			// always
+		});
 	};
 
 	function _onSelectPoint(feature)
