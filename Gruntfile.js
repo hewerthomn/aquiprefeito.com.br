@@ -59,7 +59,8 @@ module.exports = function(grunt) {
 				dest: 'public/build/css/app.min.css',
 				src: [
 					'public/css/aquiprefeito_site.css',
-					'public/css/app.css'
+					'public/css/app.css',
+					'public/packages/bootstrap/dist/css/bootstrap.min.css'
 				]
 			}
 	  },
