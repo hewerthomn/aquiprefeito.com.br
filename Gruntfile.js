@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 				src: [
 					'public/css/aquiprefeito_site.css',
 					'public/css/app.css',
-					'public/css/lumen_bootstrap.min.css'
+					'public/css/lumen_bootstrap.css'
 				]
 			}
 	  },
