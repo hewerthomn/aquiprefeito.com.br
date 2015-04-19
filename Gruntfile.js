@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 					'public/packages/angular-sanitize/angular-sanitize.min.js',
 					'public/packages/angular-touch/angular-touch.min.js',
 					'public/packages/ngstorage/ngStorage.min.js',
-					'public/packages/angular-ui-router/release/angular-ui-router.min.js',
+					'public/packages/angular-route/angular-route.min.js',
 					'public/packages/angular-bootstrap/ui-bootstrap.min.js',
 					'public/packages/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
