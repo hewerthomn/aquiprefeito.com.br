@@ -277,7 +277,7 @@ function MapService()
 			self.onSelectPointFeature = callback;
 		},
 
-	  getPosition: function(successCallback, errorCallback, alwaysCallback)
+	  getPosition: function(callbackSuccess, callbackFailed, callbackAlways)
 	  {
 	  	var self = this,
 	  			point;
