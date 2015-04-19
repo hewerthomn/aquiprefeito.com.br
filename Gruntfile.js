@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					flatten: true,
-					src: ['public/css/font/**.*'],
+					src: ['public/font/**.*'],
 					dest: 'public/build/font'
 				}]
 			}
