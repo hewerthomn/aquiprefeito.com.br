@@ -19,5 +19,13 @@
 .navbar-inverse div,
 .navbar-inverse p,
 .navbar-inverse span {
-	color: #fff;
+	color: #fff !important;
+}
+
+.navbar-inverse a:hover,
+.navbar-inverse b:hover,
+.navbar-inverse div:hover,
+.navbar-inverse p:hover,
+.navbar-inverse span:hover {
+	color: #fff !important;
 }
