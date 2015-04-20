@@ -1,6 +1,7 @@
 .navbar-brand > i {
 	color: #F7CA18 !important;
 }
+
 .olControlZoom {
 	display: none;
 }
@@ -14,9 +15,9 @@
 }
 
 .navbar-inverse a,
-.navbar-inverse span,
-.navbar-inverse p,
+.navbar-inverse b
 .navbar-inverse div,
-.navbar-inverse b {
+.navbar-inverse p,
+.navbar-inverse span {
 	color: #fff;
 }
