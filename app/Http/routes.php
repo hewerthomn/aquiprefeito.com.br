@@ -26,3 +26,13 @@ Route::group(['prefix' => 'api'], function() {
 	Route::resource('issue', 'Api\IssueController',
 									['only' => ['index', 'show']]);
 });
+
+Route::group(['prefix' => 'prefeitura'], function() {
+
+	Route::get('/', ['as' => 'prefeitura.dashboard', 'uses' => 'Mayor\IssueController@index']);
+
+	Route::resource('issue', 'Mayor\IssueController');
+
+	Route::get('issue', 'Mayor\IssueController@getFinish');
+	Route::post('issue', 'Mayor\IssueController@postFinish');
+});
