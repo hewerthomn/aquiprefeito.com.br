@@ -31,33 +31,50 @@
 	    <p>
 	    	{{ issue.comment }}
 	    </p>
-	    <hr>
+	    <hr ng-show="(issue.likes > 0 || comments.length > 0)">
 	    <p class="text-muted">
-		  	<ng-pluralize count="issue.likes" when="{'one': '1 Curtiu', 'other': '{} Curtidas'}"></ng-pluralize>
-		  	<ng-pluralize count="comments.length" when="{'one': '1 Comentário', 'other': '{} Comentários'}"></ng-pluralize>
+		  	<ng-pluralize ng-show="issue.likes > 0" count="issue.likes" when="{'one': '1 Curtiu', 'other': '{} Curtidas'}"></ng-pluralize>
+		  	<ng-pluralize ng-show="comments.length > 0" count="comments.length" when="{'one': '1 Comentário', 'other': '{} Comentários'}"></ng-pluralize>
 	    </p>
 
-  		<hr>
+			<!-- fb actions -->
+	    <div class="btn-group btn-group-justified" role="group">
+	    	<div class="btn-group" role="group">
+	    		<button class="btn btn-xs btn-default"><i class="icon-thumbs-up"></i> Curtir</button>
+	    	</div>
+	    	<div class="btn-group" role="group">
+	    		<button class="btn btn-xs btn-default"><i class="icon-chat"></i> Comentar</button>
+	    	</div>
+	    	<div class="btn-group" role="group">
+	    		<button class="btn btn-xs btn-default"><i class="icon-share"></i> Compartilhar</button>
+	    	</div>
+	    </div>
+			<!-- fb actions -->
 
-		  <div class="panel panel-default">
-		  	<div class="panel-heading">Comentários</div>
-		  	<ul class="list-group">
-		  		<li ng-repeat="comment in comments" class="list-group-item">
-		  			<div class="media">
-						  <div class="media-left">
-					      <img class="media-object" ng-src="{{ avatar(comment.facebook_id) }}">
-						  </div>
-						  <div class="media-body">
-						    <p>
-						    	<span class="text-primary">{{ comment.username }}</span>
-						    	{{ comment.comment }}
-						    </p>
-					    	<small class="text-muted">{{ comment.created_at*1000 | date:'fullDate' }}</small>
-						  </div>
-						</div>
-		  		</li>
-		  	</ul>
-		  </div>
+	    <!-- comments -->
+	    <div ng-show="comments.length > 0">
+	  		<hr>
+			  <div class="panel panel-default">
+			  	<div class="panel-heading">Comentários</div>
+			  	<ul class="list-group">
+			  		<li ng-repeat="comment in comments" class="list-group-item">
+			  			<div class="media">
+							  <div class="media-left">
+						      <img class="media-object" ng-src="{{ avatar(comment.facebook_id) }}">
+							  </div>
+							  <div class="media-body">
+							    <p>
+							    	<span class="text-primary">{{ comment.username }}</span>
+							    	{{ comment.comment }}
+							    </p>
+						    	<small class="text-muted">{{ comment.created_at*1000 | date:'fullDate' }}</small>
+							  </div>
+							</div>
+			  		</li>
+			  	</ul>
+			  </div>
+	    </div>
+	    <!-- comments -->
 
 		</div>
 	</div>
