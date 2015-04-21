@@ -15,7 +15,7 @@
 					<div class="col-sm-4 col-md-4 col-lg-4">
 						<div class="thumbnail">
 							<a href="{{ route('prefeitura.issue.show', $issue->id) }}">
-								<img src="img/issues/lg/{{ $issue->image_path }}" class="img-thumbnail">
+								<img src="/img/issues/lg/{{ $issue->image_path }}" class="img-thumbnail">
 							</a>
 							<div class="caption">
 								<h3 class="text-primary">{{ $issue->category->name }}</h3>
