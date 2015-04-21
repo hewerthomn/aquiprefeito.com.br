@@ -33,6 +33,7 @@ module.exports = function(grunt) {
 
 					'public/app/services/AquiService.js',
 					'public/app/services/MapService.js',
+					'public/app/services/IssueService.js',
 					'public/app/services/GeocoderService.js'
 				]
 			}
