@@ -2,13 +2,15 @@
 /**
  * Home Controller
  */
-function HomeController($scope, $window, focus, Aqui, Map) {
+function HomeController($scope, $window, focus, Aqui, Issue, Map) {
 
 	/*
 	 * Private metodos
 	 */
 	function _init()
 	{
+		$scope.$storage = Aqui.storage();
+
 		Map.init({
 			id: 'map',
 			startZoom: 4,
@@ -19,9 +21,8 @@ function HomeController($scope, $window, focus, Aqui, Map) {
 			onSelectPoint: _onSelectPoint
 		});
 
-		$scope.$storage = Aqui.storage();
-
 		_getPosition();
+		_getPoints();
 
 		angular.element($window).bind('resize', function() { Map.fixMapHeight(); });
 	};
@@ -37,6 +38,14 @@ function HomeController($scope, $window, focus, Aqui, Map) {
 		}, function() {
 			// always
 		});
+	};
+
+	function _getPoints()
+	{
+		Issue.getPoints()
+			.success(function(points) {
+				Map.addPoints(points, { transformTo: 'EPSG:4326' });
+			});
 	};
 
 	function _onSelectPoint(feature)
