@@ -30,6 +30,7 @@ module.exports = function(grunt) {
 					'public/app/routes.js',
 
 					'public/app/components/home/HomeController.js',
+					'public/app/components/issue/ModalIssueController.js',
 
 					'public/app/services/AquiService.js',
 					'public/app/services/MapService.js',

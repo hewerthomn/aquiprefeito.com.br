@@ -2,7 +2,7 @@
 /**
  * Home Controller
  */
-function HomeController($scope, $window, focus, Aqui, Issue, Map) {
+function HomeController($scope, $window, $modal, focus, Aqui, Issue, Map) {
 
 	/*
 	 * Private metodos
@@ -48,9 +48,27 @@ function HomeController($scope, $window, focus, Aqui, Issue, Map) {
 			});
 	};
 
+	function _modalIssue(issue)
+	{
+		$scope.issue = issue;
+
+		$scope.modalIssue = $modal.open({
+			size: 'lg',
+			scope: $scope,
+			controller: 'ModalIssueController',
+			templateUrl: 'app/components/issue/modal-issue.html'
+		});
+	};
+
 	function _onSelectPoint(feature)
 	{
-		console.log('feature data', feature.data);
+		Issue.get(feature.data.id)
+			.success(function(issue) {
+				_modalIssue(issue);
+			})
+			.error(function(err) {
+				console.error(err)
+			});
 	};
 
 	_init();
