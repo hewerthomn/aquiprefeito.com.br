@@ -26,6 +26,7 @@ module.exports = function(grunt) {
 
 					'public/app/app.js',
 					'public/app/config.js',
+					'public/app/constants.js',
 					'public/app/routes.js',
 
 					'public/app/components/home/HomeController.js',
