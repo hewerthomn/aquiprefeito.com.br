@@ -16,7 +16,7 @@ function ModalIssueController($scope, $modalInstance, Issue, URL)
 
 	$scope.photo = function()
 	{
-		return URL.SITE + 'img/issues/lg/' + $scope.issue.photo;
+		return URL.SITE + 'img/issues/big/' + $scope.issue.photo;
 	};
 
 	$scope.avatar = function(facebook_id)
