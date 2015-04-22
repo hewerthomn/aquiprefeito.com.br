@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Issue;
+use Request;
 
 class HomeController extends Controller {
 
@@ -28,21 +29,17 @@ class HomeController extends Controller {
 			$issue = $this->issue->find($id);
 			if($issue)
 			{
+				$url = Request::url();
 				$title = "Problema de {$issue->category->name} em {$issue->city->name} - #{$id}";
 
 				$v['title'] = "AquiPrefeito! - {$title}";
 				$v['facebookMeta'] = [
 					'title' => $title,
-					'image' => "www.aquiprefeito.com.br/img/issues/big/{$issue->image_path}"
+					'image' => "{$url}/img/issues/big/{$issue->image_path}"
 				];
 			}
 		}
 
 		return view('home.app', $v);
-	}
-
-	public function issue($id)
-	{
-		return redirect()->to("/{$id}#/issue-{$id}");
 	}
 }
