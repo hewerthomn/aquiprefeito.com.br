@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Issue;
-use Request;
 
 class HomeController extends Controller {
 
@@ -26,8 +25,6 @@ class HomeController extends Controller {
 
 		if($id != null)
 		{
-			$urlSite = Request::root();
-
 			$issue = $this->issue->find($id);
 			if($issue)
 			{
@@ -36,7 +33,7 @@ class HomeController extends Controller {
 				$v['title'] = "AquiPrefeito! {$title}";
 				$v['facebookMeta'] = [
 					'title' => $title,
-					'image' => "{$urlSite}/img/issues/big/{$issue->image_path}"
+					'image' => "www.aquiprefeito.com.br/img/issues/big/{$issue->image_path}"
 				];
 			}
 		}
