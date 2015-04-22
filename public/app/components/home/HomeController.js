@@ -2,7 +2,7 @@
 /**
  * Home Controller
  */
-function HomeController($scope, $window, $modal, focus, Aqui, Issue, Map) {
+function HomeController($scope, $routeParams, $window, $modal, focus, Aqui, Issue, Map) {
 
 	/*
 	 * Private metodos
@@ -10,6 +10,10 @@ function HomeController($scope, $window, $modal, focus, Aqui, Issue, Map) {
 	function _init()
 	{
 		$scope.$storage = Aqui.storage();
+		$scope.loading = {
+			issue: false,
+			points: false
+		};
 
 		Map.init({
 			id: 'map',
@@ -23,6 +27,8 @@ function HomeController($scope, $window, $modal, focus, Aqui, Issue, Map) {
 
 		_getPosition();
 		_getPoints();
+
+		_loadIssue();
 
 		angular.element($window).bind('resize', function() { Map.fixMapHeight(); });
 	};
@@ -42,10 +48,39 @@ function HomeController($scope, $window, $modal, focus, Aqui, Issue, Map) {
 
 	function _getPoints()
 	{
+		$scope.loading.points = true;
+
 		Issue.getPoints()
 			.success(function(points) {
+				$scope.loading.points = false;
 				Map.addPoints(points, { transformTo: 'EPSG:4326' });
+			})
+			.error(function(err) {
+				$scope.loading.points = false;
 			});
+	};
+
+	function _getIssue(id)
+	{
+		$scope.loading.issue = true;
+
+		Issue.get(id)
+			.success(function(issue) {
+				$scope.loading.issue = false;
+				_modalIssue(issue);
+			})
+			.error(function(err) {
+				$scope.loading.issue = false;
+				console.error(err)
+			});
+	};
+
+	function _loadIssue()
+	{
+		if($routeParams.hasOwnProperty('id'))
+		{
+			_getIssue($routeParams.id);
+		}
 	};
 
 	function _modalIssue(issue)
@@ -62,13 +97,7 @@ function HomeController($scope, $window, $modal, focus, Aqui, Issue, Map) {
 
 	function _onSelectPoint(feature)
 	{
-		Issue.get(feature.data.id)
-			.success(function(issue) {
-				_modalIssue(issue);
-			})
-			.error(function(err) {
-				console.error(err)
-			});
+		_getIssue(feature.data.id);
 	};
 
 	_init();
