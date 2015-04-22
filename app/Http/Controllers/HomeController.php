@@ -28,9 +28,9 @@ class HomeController extends Controller {
 			$issue = $this->issue->find($id);
 			if($issue)
 			{
-				$title = " - Problema de {$issue->category->name} em {$issue->city->name} - #{$id}";
+				$title = "Problema de {$issue->category->name} em {$issue->city->name} - #{$id}";
 
-				$v['title'] = "AquiPrefeito! {$title}";
+				$v['title'] = "AquiPrefeito! - {$title}";
 				$v['facebookMeta'] = [
 					'title' => $title,
 					'image' => "www.aquiprefeito.com.br/img/issues/big/{$issue->image_path}"
