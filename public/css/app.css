@@ -29,3 +29,25 @@
 .navbar-inverse span:hover {
 	color: #fff !important;
 }
+
+/**
+ * Share Bar
+ */
+.fb-actions {
+	list-style: none;
+	padding: 0;
+	display: block;
+	text-align: center;
+}
+
+.fb-actions li {
+	display: inline-block;
+	width: 7.9em;
+}
+
+.fb-actions li a {
+	text-decoration: none;
+	color: #666;
+	display: block;
+	outline: 0;
+}
