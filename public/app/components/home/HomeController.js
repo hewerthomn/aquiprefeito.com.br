@@ -2,7 +2,7 @@
 /**
  * Home Controller
  */
-function HomeController($scope, $routeParams, $location, $window, $modal, focus, Aqui, Issue, Map) {
+function HomeController($scope, $location, $window, $modal, focus, Aqui, Issue, Map) {
 
 	/*
 	 * Private metodos
@@ -77,9 +77,12 @@ function HomeController($scope, $routeParams, $location, $window, $modal, focus,
 
 	function _loadIssue()
 	{
-		if($routeParams.hasOwnProperty('id'))
+		var url = $location.absUrl();
+		var result = /([0-9]*)#\//g.exec(url);
+
+		if(result != null && result.length === 2 && result[1] !== "")
 		{
-			_getIssue($routeParams.id);
+			_getIssue(result[1]);
 		}
 	};
 
