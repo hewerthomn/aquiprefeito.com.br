@@ -9,10 +9,10 @@
 	<meta property="og:locale" content="pt_BR">
 	<meta property="og:site_name" content="AquiPrefeito!">
 	<meta property="og:url" content="http://aquiprefeito.com.br">
-	@if(isset($facebookMeta))
-<meta property="og:title" content="{{ $facebookMeta['title'] }}">
-	<meta property="og:image" content="{{ $facebookMeta['image'] }}">
-	<meta property="og:image:type" content="image/jpeg">
+	@if(isset($issueMeta))
+<meta property="og:title" content="{{ $issueMeta['title'] }}">
+	<meta property="og:url" content="{{ $issueMeta['url'] }}">
+	<meta property="og:image" content="{{ $issueMeta['image'] }}">
 	<meta property="og:image:width" content="520">
 	@endif
 
