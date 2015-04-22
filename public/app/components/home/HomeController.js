@@ -2,7 +2,7 @@
 /**
  * Home Controller
  */
-function HomeController($scope, $routeParams, $window, $modal, focus, Aqui, Issue, Map) {
+function HomeController($scope, $routeParams, $location, $window, $modal, focus, Aqui, Issue, Map) {
 
 	/*
 	 * Private metodos
@@ -93,11 +93,20 @@ function HomeController($scope, $routeParams, $window, $modal, focus, Aqui, Issu
 			controller: 'ModalIssueController',
 			templateUrl: 'app/components/issue/modal-issue.html'
 		});
+
+		$scope.modalIssue.result.then(function() {
+			$location.path('/', false);
+		}, function() {
+			$location.path('/', false);
+		});
 	};
 
 	function _onSelectPoint(feature)
 	{
-		_getIssue(feature.data.id);
+		var id = feature.data.id;
+
+		_getIssue(id);
+		$location.path('issue-' + id, false);
 	};
 
 	_init();

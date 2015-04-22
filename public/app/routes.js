@@ -14,7 +14,7 @@ function routeConfig($routeProvider) {
 			templateUrl: 'app/components/home/home.html'
 		})
 		.otherwise({
-			redirect: '/'
+			redirectTo: '/'
 		});
 };
 

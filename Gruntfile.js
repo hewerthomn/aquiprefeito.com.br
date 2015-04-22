@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 					'public/app/config.js',
 					'public/app/constants.js',
 					'public/app/routes.js',
+					'public/app/run.js',
 
 					'public/app/components/home/HomeController.js',
 					'public/app/components/issue/ModalIssueController.js',
