@@ -8,12 +8,15 @@
 
 	<meta property="og:locale" content="pt_BR">
 	<meta property="og:site_name" content="AquiPrefeito!">
-	<meta property="og:url" content="http://aquiprefeito.com.br">
 	@if(isset($issueMeta))
 <meta property="og:title" content="{{ $issueMeta['title'] }}">
 	<meta property="og:url" content="{{ $issueMeta['url'] }}">
 	<meta property="og:image" content="{{ $issueMeta['image'] }}">
 	<meta property="og:image:width" content="520">
+
+	@else
+<meta property="og:url" content="http://aquiprefeito.com.br">
+<meta property="og:title" content="Reporte os problemas encontrados em sua cidade">
 	@endif
 
 	<link href="{{ asset('/build/css/app.min.css') }}" rel="stylesheet">
