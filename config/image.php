@@ -9,6 +9,7 @@
 //		    width  height crop  quality
 		'sm' => [120,	120, false, 100],
 		'md' => [240, 240, false, 100],
-		'lg' => [420, 420, false, 100]
+		'lg' => [420, 420, false, 100],
+		'big' => [520, 520, false, 100]
 	],
 ];

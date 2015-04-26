@@ -1,0 +1,88 @@
+<div class="modal-header">
+	<button class="close" ng-click="cancel()">&times;</button>
+	<h3 class="modal-title">
+		<img ng-src="{{ issue.category_icon }}">
+		{{ issue.category_name }}
+		<small class="text-muted">#{{ issue.id }}</small>
+	</h3>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-md-7 text-center">
+			<img ng-src="{{ photo() }}" alt="" class="img-thumbnail">
+		</div>
+		<div class="col-md-5">
+
+			<div class="media">
+			  <div class="media-left">
+			    <a href="#">
+			      <img class="media-object" ng-src="{{ avatar() }}">
+			    </a>
+			  </div>
+			  <div class="media-body">
+			  	<h4 class="media-heading text-primary">{{ issue.username }}</h4>
+			  	<small class="text-muted">
+			  		<span>{{ issue.created_at * 1000 | date:'fullDate' }}</span>
+			  	</small>
+			  </div>
+			</div>
+
+			<br>
+
+	    <p>
+	    	{{ issue.comment }}
+	    </p>
+	    <hr ng-show="(issue.likes > 0 || comments.length > 0)">
+	    <p class="text-muted">
+		  	<ng-pluralize ng-show="issue.likes > 0" count="issue.likes" when="{'one': '1 Curtiu', 'other': '{} Curtidas'}"></ng-pluralize>
+		  	<ng-pluralize ng-show="comments.length > 0" count="comments.length" when="{'one': '1 Comentário', 'other': '{} Comentários'}"></ng-pluralize>
+	    </p>
+
+			<!-- fb actions -->
+			<ul class="fb-actions">
+				<li class="like">
+					<a href="" class="text-primary">
+						<i class="icon-thumbs-up"></i> Curtir
+					</a>
+				</li>
+				<li class="comment">
+					<a href="" class="text-primary">
+						<i class="icon-comment"></i> Comentar
+					</a>
+				</li>
+				<li class="share">
+					<a href="" class="text-primary">
+						<i class="icon-share"></i> Compartilhar
+					</a>
+				</li>
+			</ul>
+			<!-- fb actions -->
+
+	    <!-- comments -->
+	    <div ng-show="comments.length > 0">
+	  		<hr>
+			  <div class="panel panel-default">
+			  	<div class="panel-heading"><i class="icon-chat"></i> Comentários</div>
+			  	<ul class="list-group">
+			  		<li ng-repeat="comment in comments" class="list-group-item">
+			  			<div class="media">
+							  <div class="media-left">
+						      <img class="media-object" ng-src="{{ avatar(comment.facebook_id) }}">
+							  </div>
+							  <div class="media-body">
+							    <p>
+							    	<span class="text-primary">{{ comment.username }}</span>
+							    	{{ comment.comment }}
+							    </p>
+						    	<small class="text-muted">{{ comment.created_at*1000 | date:'fullDate' }}</small>
+							  </div>
+							</div>
+			  		</li>
+			  	</ul>
+			  </div>
+	    </div>
+	    <!-- comments -->
+
+		</div>
+	</div>
+</div>

@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'HomeController@index');
+Route::get('/{id?}', ['as' => 'home', 'uses' => 'HomeController@index']);
 
 Route::get('upload', function() {
 	return view('upload');
