@@ -1,7 +1,4 @@
 <?php
-
-Route::get('/{id?}', ['as' => 'home', 'uses' => 'HomeController@index']);
-
 Route::get('upload', function() {
 	return view('upload');
 });
@@ -36,3 +33,5 @@ Route::group(['prefix' => 'prefeitura'], function() {
 	Route::get('issue', 'Mayor\IssueController@getFinish');
 	Route::post('issue', 'Mayor\IssueController@postFinish');
 });
+
+Route::get('/{id?}', ['as' => 'home', 'uses' => 'HomeController@index']);
