@@ -78,9 +78,9 @@ function HomeController($scope, $location, $window, $modal, focus, Aqui, Issue, 
 	function _loadIssue()
 	{
 		var url = $location.absUrl();
-		var result = /([0-9]*)#\//g.exec(url);
+		var result = /([0-9]*)(\?fb_ref=Default)?#\//g.exec(url);
 
-		if(result != null && result.length === 2 && result[1] !== "")
+		if(result != null && result.length >= 2 && result[1] !== "")
 		{
 			_getIssue(result[1]);
 		}
