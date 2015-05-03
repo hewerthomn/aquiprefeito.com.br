@@ -25,7 +25,10 @@ class IssueController extends Controller
 
 	public function index()
 	{
-		$city_name = Input::get('city_name');
+		$pageSize 	= 2;
+		$page 			= Input::has('page') ? Input::get('page') : 0;
+		$offset			= ($pageSize * $page);
+		$city_name 	= Input::get('city_name');
 
 		$issues = DB::select(
 			"SELECT
@@ -46,11 +49,12 @@ class IssueController extends Controller
 				(SELECT COUNT(id) FROM comments WHERE comments.issue_id = i.id) AS comments
 			FROM
 				issues i, categories c, cities, status s
-			where
+			WHERE
 				i.category_id = c.id
 				AND i.city_id = cities.id
 				AND i.status_id = s.id
 				AND cities.name = '{$city_name}'
+			LIMIT {$pageSize} OFFSET {$offset}
 			");
 
 		return response()->json($issues);
