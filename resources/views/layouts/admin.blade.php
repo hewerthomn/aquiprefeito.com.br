@@ -45,6 +45,9 @@
 	</nav>
 
 	<div class="container">
+
+		{!! Notification::showAll() !!}
+
 		@yield('content')
 	</div>
 

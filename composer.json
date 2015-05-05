@@ -8,7 +8,8 @@
 		"laravel/framework": "5.0.*",
 		"imagine/imagine"  : "0.6.2",
 		"barryvdh/laravel-cors": "0.5.x@dev",
-		"laravelcollective/html": "~5.0"
+		"laravelcollective/html": "~5.0",
+		"edvinaskrucas/notification": "5.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
