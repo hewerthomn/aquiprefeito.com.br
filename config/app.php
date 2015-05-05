@@ -149,6 +149,8 @@ return [
 		 * Custom Service Providers
 		 */
 		'Barryvdh\Cors\CorsServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
+		'Krucas\Notification\NotificationServiceProvider'
 	],
 
 	/*
@@ -196,7 +198,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
+		'Form' 			=> 'Collective\Html\FormFacade',
+		'Html' 			=> 'Collective\Html\HtmlFacade',
+		'Notification'	=> 'Krucas\Notification\Facades\Notification'
 	],
 
 ];

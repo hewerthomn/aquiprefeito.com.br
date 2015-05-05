@@ -43,6 +43,26 @@ class Issue extends Model
 		return $this->hasMany('App\Like');
 	}
 
+	public function map_view()
+	{
+		$lon = $this->x;
+		$lat = $this->y;
+
+		return "http://maps.googleapis.com/maps/api/staticmap?center={$lat},{$lon}&zoom=19&size=600x600&markers=color:red%7Clabel:P%7C{$lat},{$lon}&maptype=hybrid&sensor=false";
+	}
+
+	public function link($name)
+	{
+		switch ($name) {
+			case 'maps':
+				$lon = $this->x;
+				$lat = $this->y;
+
+				return "https://google.com.br/maps/search/-{$lat}+{$lon}/@{$lat},{$lon},18z";
+				break;
+		}
+	}
+
 	/**
 	 * Has many Comment
 	 */
