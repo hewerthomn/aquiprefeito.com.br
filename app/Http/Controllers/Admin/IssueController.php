@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\DeleteIssueRequest;
 use App\City;
 use App\Issue;
 use App\Status;
@@ -37,7 +38,7 @@ class IssueController extends Controller
 		return view('admin.issue.show', $v);
 	}
 
-	public function postDelete()
+	public function postDelete(DeleteIssueRequest $request)
 	{
 		$id = Input::get('id');
 		$issue = $this->issue->find($id);
