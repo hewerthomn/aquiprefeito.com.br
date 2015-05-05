@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'aquiprefeito_site';
-  src: url('../font/aquiprefeito_site.eot?76967485');
-  src: url('../font/aquiprefeito_site.eot?76967485#iefix') format('embedded-opentype'),
-       url('../font/aquiprefeito_site.woff?76967485') format('woff'),
-       url('../font/aquiprefeito_site.ttf?76967485') format('truetype'),
-       url('../font/aquiprefeito_site.svg?76967485#aquiprefeito_site') format('svg');
+  src: url('../font/aquiprefeito_site.eot?39625113');
+  src: url('../font/aquiprefeito_site.eot?39625113#iefix') format('embedded-opentype'),
+       url('../font/aquiprefeito_site.woff?39625113') format('woff'),
+       url('../font/aquiprefeito_site.ttf?39625113') format('truetype'),
+       url('../font/aquiprefeito_site.svg?39625113#aquiprefeito_site') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'aquiprefeito_site';
-    src: url('../font/aquiprefeito_site.svg?76967485#aquiprefeito_site') format('svg');
+    src: url('../font/aquiprefeito_site.svg?39625113#aquiprefeito_site') format('svg');
   }
 }
 */
@@ -61,4 +61,5 @@
 .icon-share:before { content: '\e804'; } /* '' */
 .icon-list:before { content: '\e805'; } /* '' */
 .icon-comment:before { content: '\e806'; } /* '' */
+.icon-search:before { content: '\e807'; } /* '' */
 .icon-menu:before { content: '\e808'; } /* '' */
