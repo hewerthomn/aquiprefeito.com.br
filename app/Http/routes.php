@@ -24,6 +24,10 @@ Route::group(['prefix' => 'api'], function() {
 									['only' => ['index', 'show']]);
 });
 
+
+require 'routesAdmin.php';
+
+
 Route::group(['prefix' => 'prefeitura'], function() {
 
 	Route::get('/', ['as' => 'prefeitura.dashboard', 'uses' => 'Mayor\IssueController@index']);
