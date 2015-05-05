@@ -29,7 +29,7 @@
 	@foreach($issues as $issue)
 		<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 			<div class="thumbnail">
-				<a href="/admin/issue/{{ $issue->id }}">
+				<a href="/admin/issue/show/{{ $issue->id }}">
 					<img src="/img/issues/lg/{{ $issue->image_path }}">
 				</a>
 				<div class="caption">

@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\City;
 use App\Issue;
 use App\Status;
+use Input, Notification;
 
 /**
 * Admin Issue Controller
@@ -26,5 +27,30 @@ class IssueController extends Controller
 		$v['issues'] = $issues->paginate(6);
 
 		return view('admin.issue.index', $v);
+	}
+
+	public function getShow($id)
+	{
+		$v['title'] = 'Detalhes de Problema';
+		$v['issue'] = $this->issue->find($id);
+
+		return view('admin.issue.show', $v);
+	}
+
+	public function postDelete()
+	{
+		$id = Input::get('id');
+		$issue = $this->issue->find($id);
+
+		if ($issue && $issue->delete())
+		{
+			Notification::success("Problema #{$id} excluído com sucesso.");
+		}
+		else
+		{
+			Notification::error("Ops, erro ao excluir problema #{$id}...");
+		}
+
+		return redirect(url('/admin/issue/'));
 	}
 }
