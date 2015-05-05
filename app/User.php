@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Auth;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -31,4 +32,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	/**
+	 * Check if user is developer
+	 * @return boolean [description]
+	 */
+	public static function isDev()
+	{
+		return Auth::user()->city_id === null;
+	}
 }
