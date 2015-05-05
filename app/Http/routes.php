@@ -26,16 +26,6 @@ Route::group(['prefix' => 'api'], function() {
 
 
 require 'routesAdmin.php';
-
-
-Route::group(['prefix' => 'prefeitura'], function() {
-
-	Route::get('/', ['as' => 'prefeitura.dashboard', 'uses' => 'Mayor\IssueController@index']);
-
-	Route::resource('issue', 'Mayor\IssueController');
-
-	Route::get('issue', 'Mayor\IssueController@getFinish');
-	Route::post('issue', 'Mayor\IssueController@postFinish');
-});
+require 'routesPrefeitura.php';
 
 Route::get('/{id?}', ['as' => 'home', 'uses' => 'HomeController@index']);
