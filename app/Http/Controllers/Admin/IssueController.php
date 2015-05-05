@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\City;
 use App\Issue;
 use App\Status;
-use Input, Notification;
+use File, Input, Notification;
 
 /**
 * Admin Issue Controller
@@ -44,6 +44,16 @@ class IssueController extends Controller
 
 		if ($issue && $issue->delete())
 		{
+			$files = [];
+			$path = public_path() . '/img/issues/';
+			$folders = ['', 'sm/', 'md/', 'lg/', 'big/'];
+
+			foreach ($folders as $folder) {
+				$files[] = "{$path}{$folder}{$issue->image_path}";
+			}
+
+			File::delete($files);
+
 			Notification::success("Problema #{$id} excluído com sucesso.");
 		}
 		else
