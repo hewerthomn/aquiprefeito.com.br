@@ -5,4 +5,4 @@
 .env
 public/packages
 public/build
-
+public/img/issues/*
