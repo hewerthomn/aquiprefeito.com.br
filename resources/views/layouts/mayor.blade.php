@@ -13,7 +13,7 @@
 <body>
 
 	<nav class="navbar navbar-default navbar-fixed-top">
-	  <div class="container-fluid">
+	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -24,25 +24,35 @@
 	      </button>
 	      <a class="navbar-brand" href="{{ route('prefeitura.dashboard') }}">
 	      	<i class="icon-aquiprefeito"></i><b>Aqui</b>Prefeito!
+      		<small class="text-primary">{{ Session::has('city') ? Session::get('city')->name : '' }}</small>
       	</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="navbar-collapse">
 	      <ul class="nav navbar-nav navbar-right">
+	      	<li class="active"><a>{{ Auth::user()->name }}</a></li>
 	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{ username } <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="icon-menu"></i></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Sair</a></li>
+	            <li><a href="/auth/logout">Sair</a></li>
 	          </ul>
 	        </li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
+	  </div><!-- /.container -->
 	</nav>
 
-	<div class="container-fluid">
-		@yield('content')
+	<div class="container">
+		@if(Session::has('city'))
+			@yield('content')
+		@else
+			<div class="text-center">
+				<h3>Não há nenhuma cidade selecionada</h3>
+				<hr>
+				<a href="/prefeitura/select" class="btn btn-primary">Selecionar cidade</a>
+			</div>
+		@endif
 	</div>
 
 
