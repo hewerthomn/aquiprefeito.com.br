@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AquiPrefeito! - {{ $title }}</title>
+	<title>AquiPrefeito! - {{ isset($title) ? $title : "Admin" }}</title>
 
 	<link href="{{ asset('css/lumen_bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/aquiprefeito_site.css') }}" rel="stylesheet">
