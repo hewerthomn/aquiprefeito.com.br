@@ -3,7 +3,7 @@
  * Routes Admin
  */
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 	Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'Admin\AdminController@dashboard']);
 	Route::get('profile', ['as' => 'admin.profile', 'uses' => 'Admin\AdminController@profile']);
