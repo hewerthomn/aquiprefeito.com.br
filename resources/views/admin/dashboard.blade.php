@@ -2,16 +2,22 @@
 
 @section('content')
 
-<h1>Administração</h1>
+<h1>{{ $title }}</h1>
 <hr>
+<br>
 
 <div class="row">
-	<div class="col-md-6">
-
+	{{-- Issues  --}}
+	<div class="col-md-4">
+		<div class="panel panel-default text-center">
+			<a class="panel-body" href="/admin/issue">
+				<h1 class="text-warning"><i class="icon-aquiprefeito fa-4x"></i></h1>
+				<h2>Problemas recebidos</h2>
+			</a>
+		</div>
 	</div>
-	<div class="col-md-6">
+	{{-- /Issues  --}}
 
-	</div>
 </div>
 
 @stop
